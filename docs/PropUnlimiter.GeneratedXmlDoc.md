@@ -1,5 +1,26 @@
 # PropUnlimiter #
 
+## Type Manager.PropContainer
+
+ A container for Unlimited props, wraps around the actual prop instance itself, and a dict of string to floats for extra values ( more precise position, etc ) 
+
+
+
+---
+#### Field Manager.PropContainer.propInstance
+
+ The prop instance itself 
+
+
+
+---
+#### Field Manager.PropContainer.extras
+
+ The extras dictionary, holds values used by other mods 
+
+
+
+---
 #### Field Manager.PropUnlimiterManager.props
 
  Dictionary of a "grid" of values on the map that correspond to the props in that grid 
@@ -116,7 +137,7 @@
 
 |Name | Description |
 |-----|------|
-|propInfos: ||
+|propInfos: |A list of prop infos to load|
 
 
 ---

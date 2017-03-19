@@ -11,9 +11,20 @@ using UnityEngine;
 namespace PropUnlimiter.Manager
 {
 
+    /// <summary>
+    /// A container for Unlimited props, wraps around the actual prop instance itself,
+    /// and a dict of string to floats for extra values ( more precise position, etc )
+    /// </summary>
     public class PropContainer
     {
+        /// <summary>
+        /// The prop instance itself
+        /// </summary>
         public PropInstance propInstance;
+
+        /// <summary>
+        /// The extras dictionary, holds values used by other mods
+        /// </summary>
         public Dictionary<string, float> extras = new Dictionary<string, float>();
     }
 
@@ -307,7 +318,7 @@ namespace PropUnlimiter.Manager
         /// <summary>
         /// Populate Prop Unlimiter store, given a list of prop infos 
         /// </summary>
-        /// <param name="propInfos"></param>
+        /// <param name="propInfos">A list of prop infos to load</param>
         public void LoadWrappers(List<PropWrapper> propInfos)
         {
             foreach( PropWrapper wrapper in propInfos )
