@@ -5,6 +5,7 @@ using PropUnlimiter.Utils;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using UnityEngine;
 
@@ -30,12 +31,20 @@ namespace PropUnlimiter.Manager
 
     class PropUnlimiterManager : Singleton<PropUnlimiterManager>
     {
-         /// <summary>
+        
+        private Dictionary<int, List<PropContainer>> props = new Dictionary<int, List<PropContainer>>();
+        
+        /// <summary>
         /// Dictionary of a "grid" of values on the map that correspond to the props in that grid
         /// </summary> 
-        private Dictionary<int, List<PropContainer>> props = new Dictionary<int, List<PropContainer>>();
-
         public Dictionary<int, List<PropContainer>> Props { get => props; }
+
+        private Dictionary<int, Dictionary<string, float>> extraMapping = new Dictionary<int, Dictionary<string, float>>();
+
+        /// <summary>
+        /// Dictionary of PropContainer references/hashcodes to the extra mapping for the PropContainer
+        /// </summary>
+        public Dictionary<int, Dictionary<string, float>> ExtraMapping { get => extraMapping; }
 
         /// <summary>
         /// Place a prop in alternate prop store, based on the propInfo ID, intended for use in serialization
@@ -50,7 +59,8 @@ namespace PropUnlimiter.Manager
             SetUnlimitedProp(prefab, position, angle, single);
         }
         /// <summary>
-        ///  Place a prop in alternate prop store
+        ///  Place a prop in alternate prop store, 
+        ///  Note: Will set additional values in extras dict (accx, accz) for precision placement of props
         /// </summary>
         /// <param name="info">Prop info(mesh, availability flags, etc)</param>
         /// <param name="position"> position of prop</param>
@@ -76,7 +86,14 @@ namespace PropUnlimiter.Manager
 
             PropContainer container = new PropContainer();
             container.propInstance = newProp;
+
+            //Add precise prop position by default
+            container.extras["accx"] = position.x;
+            container.extras["accy"] = position.y;
+            container.extras["accz"] = position.z;
+            
             props[gridVal].Add(container);
+            extraMapping[RuntimeHelpers.GetHashCode(container)]=container.extras;
         }
 
         /// <summary>
@@ -112,6 +129,7 @@ namespace PropUnlimiter.Manager
                 container.extras = JsonMapper.ToObject<Dictionary<string, float>>(wrapper.extraJson);
             }
             container.propInstance = newProp;
+            extraMapping[RuntimeHelpers.GetHashCode(container)]=container.extras;
             props[gridVal].Add(container);
         }
 
@@ -125,8 +143,26 @@ namespace PropUnlimiter.Manager
             if (PropUnlimiterManager.instance.props.ContainsKey(gridKey))
             {
                 List<PropContainer> list = PropUnlimiterManager.instance.props[gridKey];
+                extraMapping.Remove(RuntimeHelpers.GetHashCode(container));
+
                 list.Remove(container);
             }
+        }
+
+        /// <summary>
+        /// Update an existing PropContainer to a new position/angle
+        /// </summary>
+        /// <param name="container">The PropContainer to update</param>
+        /// <param name="newPosition">The new prop position</param>
+        /// <param name="newAngle">The new prop angle</param>
+        public void UpdateProp(PropContainer container, Vector3 newPosition, float newAngle)
+        {
+            container.extras["accx"] = newPosition.x;
+            container.extras["accy"] = newPosition.y;
+            container.extras["accz"] = newPosition.z;
+            container.propInstance.Position = newPosition;
+            container.propInstance.Angle = newAngle;
+
         }
 
         /// <summary>
@@ -250,7 +286,7 @@ namespace PropUnlimiter.Manager
 
             //If no prop found, then reset values
             gridKey = -1;
-            prop = new PropContainer();
+            prop = null;
             return false;
 
         }

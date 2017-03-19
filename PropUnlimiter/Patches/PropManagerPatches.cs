@@ -1,4 +1,5 @@
-﻿using Harmony;
+﻿using ColossalFramework.Math;
+using Harmony;
 using PropUnlimiter.Manager;
 using PropUnlimiter.Utils;
 using System;
@@ -36,6 +37,44 @@ namespace PropUnlimiter.Patches
     [HarmonyPatch("EndRenderingImpl")]
     class PropRenderingPatch
     {
+        /// <summary>
+        /// Intended for internal accurate rendering only.
+        /// </summary>
+        /// <param name="cameraInfo"></param>
+        /// <param name="container"></param>
+        private static void RenderProp(RenderManager.CameraInfo cameraInfo, PropContainer container)
+        {
+            if ( (container.propInstance.m_flags & 68) != 0)
+            {
+                return;
+            }
+            PropInfo info = container.propInstance.Info;
+            Vector3 inaccuratePosition = container.propInstance.Position;
+            Vector3 position = new Vector3(container.extras["accx"], inaccuratePosition.y, container.extras["accz"]);
+            if (!cameraInfo.CheckRenderDistance(position, info.m_maxRenderDistance) || !cameraInfo.Intersect(position, info.m_generatedInfo.m_size.y * info.m_maxScale))
+            {
+                return;
+            }
+            float angle = container.propInstance.Angle;
+            Randomizer r = new Randomizer(0);
+            float scale = info.m_minScale + (float)((double)r.Int32(10000U) * ((double)info.m_maxScale - (double)info.m_minScale) * 9.99999974737875E-05);
+            Color color = info.GetColor(ref r);
+            Vector4 objectIndex = new Vector4(1f / 512f, 1f / 384f, 0.0f, 0.0f);
+            InstanceID id = new InstanceID();
+            if (info.m_requireHeightMap)
+            {
+                Texture _HeightMap;
+                Vector4 _HeightMapping;
+                Vector4 _SurfaceMapping;
+                TerrainManager.instance.GetHeightMapping(position, out _HeightMap, out _HeightMapping, out _SurfaceMapping);
+                PropInstance.RenderInstance(cameraInfo, info, id, position, scale, angle, color, objectIndex, true, _HeightMap, _HeightMapping, _SurfaceMapping);
+            }
+            else
+            {
+                PropInstance.RenderInstance(cameraInfo, info, id, position, scale, angle, color, objectIndex, true);
+            }
+        }
+
         public static void Postfix(ref RenderManager.CameraInfo cameraInfo)
         {
             ItemClass.Availability availability = ToolManager.instance.m_properties.m_mode;
@@ -61,7 +100,14 @@ namespace PropUnlimiter.Patches
                             {
                                 foreach (PropContainer instance in list)
                                 {
-                                    instance.propInstance.RenderInstance(cameraInfo, 0, renderGroup.m_instanceMask);
+                                    if ( instance.extras.ContainsKey("accx") && instance.extras.ContainsKey("accy") && instance.extras.ContainsKey("accz"))
+                                    {
+                                        RenderProp(cameraInfo, instance);
+                                    }
+                                    else
+                                    {
+                                        instance.propInstance.RenderInstance(cameraInfo, 0, renderGroup.m_instanceMask);
+                                    }
                                 }
                             }
 
@@ -78,7 +124,6 @@ namespace PropUnlimiter.Patches
                     PropInstance.RenderLod(cameraInfo, prefab);
                 }
             }
-
         }
     }
 

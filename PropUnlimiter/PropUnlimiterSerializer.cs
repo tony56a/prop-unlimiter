@@ -55,11 +55,8 @@ namespace PropUnlimiter
                 LoggerUtils.Log("Props loaded, parsing data");
                 if (loadedPropData != null && loadedPropData.Length > 0)
                 {
-                    MemoryStream memoryStream = new MemoryStream();
-
-                    memoryStream.Write(loadedPropData, 0, loadedPropData.Length);
-                    memoryStream.Position = 0;
-
+                    MemoryStream memoryStream = new MemoryStream(loadedPropData);
+                    
                     try
                     {
                         PropWrapper[] props = binaryFormatter.Deserialize(memoryStream) as PropWrapper[];
