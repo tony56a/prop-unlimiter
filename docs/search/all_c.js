@@ -9,6 +9,7 @@ var searchData=
   ['propcreatepatch',['PropCreatePatch',['../class_prop_unlimiter_1_1_patches_1_1_prop_create_patch.html',1,'PropUnlimiter::Patches']]],
   ['propinstance',['propInstance',['../class_prop_unlimiter_1_1_manager_1_1_prop_container.html#a0c87b216c07f733901210f8bc332bf38',1,'PropUnlimiter::Manager::PropContainer']]],
   ['proprenderingpatch',['PropRenderingPatch',['../class_prop_unlimiter_1_1_patches_1_1_prop_rendering_patch.html',1,'PropUnlimiter::Patches']]],
+  ['props',['Props',['../class_prop_unlimiter_1_1_manager_1_1_prop_unlimiter_manager.html#a0945ed514d22e74a887ecbb920c67a49',1,'PropUnlimiter::Manager::PropUnlimiterManager']]],
   ['propterrainupdatedpatch',['PropTerrainUpdatedPatch',['../class_prop_unlimiter_1_1_patches_1_1_prop_terrain_updated_patch.html',1,'PropUnlimiter::Patches']]],
   ['propunlimiter',['PropUnlimiter',['../namespace_prop_unlimiter.html',1,'']]],
   ['propunlimiterloading',['PropUnlimiterLoading',['../class_prop_unlimiter_1_1_prop_unlimiter_loading.html',1,'PropUnlimiter']]],

@@ -102,7 +102,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:acefdac8a19b94f6de72c01481d9747cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Place a prop in alternate prop store, based on the propInfo ID, intended for use in serialization  <a href="#acefdac8a19b94f6de72c01481d9747cc">More...</a><br /></td></tr>
 <tr class="separator:acefdac8a19b94f6de72c01481d9747cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a20bcb33fec53f9fb9fd0c5dcd04be9ed"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_prop_unlimiter_1_1_manager_1_1_prop_unlimiter_manager.html#a20bcb33fec53f9fb9fd0c5dcd04be9ed">SetUnlimitedProp</a> (PropInfo info, Vector3 position, float angle, bool single)</td></tr>
-<tr class="memdesc:a20bcb33fec53f9fb9fd0c5dcd04be9ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Place a prop in alternate prop store  <a href="#a20bcb33fec53f9fb9fd0c5dcd04be9ed">More...</a><br /></td></tr>
+<tr class="memdesc:a20bcb33fec53f9fb9fd0c5dcd04be9ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">Place a prop in alternate prop store, Note: Will set additional values in extras dict (accx, accz) for precision placement of props  <a href="#a20bcb33fec53f9fb9fd0c5dcd04be9ed">More...</a><br /></td></tr>
 <tr class="separator:a20bcb33fec53f9fb9fd0c5dcd04be9ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa21130f7f4ee6842ce076383de61fddd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_prop_unlimiter_1_1_manager_1_1_prop_unlimiter_manager.html#aa21130f7f4ee6842ce076383de61fddd">SetUnlimitedProp</a> (<a class="el" href="class_prop_unlimiter_1_1_utils_1_1_prop_wrapper.html">PropWrapper</a> wrapper)</td></tr>
 <tr class="memdesc:aa21130f7f4ee6842ce076383de61fddd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Place a prop in prop store with prop info. Intended for deserialization only  <a href="#aa21130f7f4ee6842ce076383de61fddd">More...</a><br /></td></tr>
@@ -110,6 +110,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a24f770bae29679e39af7046f85bd6039"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_prop_unlimiter_1_1_manager_1_1_prop_unlimiter_manager.html#a24f770bae29679e39af7046f85bd6039">DeleteProp</a> (int gridKey, <a class="el" href="class_prop_unlimiter_1_1_manager_1_1_prop_container.html">PropContainer</a> container)</td></tr>
 <tr class="memdesc:a24f770bae29679e39af7046f85bd6039"><td class="mdescLeft">&#160;</td><td class="mdescRight">Delete a prop, given the prop, and the grid it belongs to  <a href="#a24f770bae29679e39af7046f85bd6039">More...</a><br /></td></tr>
 <tr class="separator:a24f770bae29679e39af7046f85bd6039"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aef9c520f1816458d45b9f30a10e3ecf0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_prop_unlimiter_1_1_manager_1_1_prop_unlimiter_manager.html#aef9c520f1816458d45b9f30a10e3ecf0">UpdateProp</a> (<a class="el" href="class_prop_unlimiter_1_1_manager_1_1_prop_container.html">PropContainer</a> container, Vector3 newPosition, float newAngle)</td></tr>
+<tr class="memdesc:aef9c520f1816458d45b9f30a10e3ecf0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Update an existing <a class="el" href="class_prop_unlimiter_1_1_manager_1_1_prop_container.html" title="A container for Unlimited props, wraps around the actual prop instance itself, and a dict of string t...">PropContainer</a> to a new position/angle  <a href="#aef9c520f1816458d45b9f30a10e3ecf0">More...</a><br /></td></tr>
+<tr class="separator:aef9c520f1816458d45b9f30a10e3ecf0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ada2d5aabdf2a918c5856ca1554414f97"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_prop_unlimiter_1_1_manager_1_1_prop_unlimiter_manager.html#ada2d5aabdf2a918c5856ca1554414f97">RaycastUnlimitedProps</a> (Ray input, out int gridKey, out <a class="el" href="class_prop_unlimiter_1_1_manager_1_1_prop_container.html">PropContainer</a> prop)</td></tr>
 <tr class="memdesc:ada2d5aabdf2a918c5856ca1554414f97"><td class="mdescLeft">&#160;</td><td class="mdescRight">Raycast for props, based on original propmanager raycast  <a href="#ada2d5aabdf2a918c5856ca1554414f97">More...</a><br /></td></tr>
 <tr class="separator:ada2d5aabdf2a918c5856ca1554414f97"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -131,9 +134,12 @@ Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="properties"></a>
 Properties</h2></td></tr>
-<tr class="memitem:a0945ed514d22e74a887ecbb920c67a49"><td class="memItemLeft" align="right" valign="top"><a id="a0945ed514d22e74a887ecbb920c67a49"></a>
-Dictionary&lt; int, List&lt; <a class="el" href="class_prop_unlimiter_1_1_manager_1_1_prop_container.html">PropContainer</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>Props</b><code> [get]</code></td></tr>
+<tr class="memitem:a0945ed514d22e74a887ecbb920c67a49"><td class="memItemLeft" align="right" valign="top">Dictionary&lt; int, List&lt; <a class="el" href="class_prop_unlimiter_1_1_manager_1_1_prop_container.html">PropContainer</a> &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_prop_unlimiter_1_1_manager_1_1_prop_unlimiter_manager.html#a0945ed514d22e74a887ecbb920c67a49">Props</a><code> [get]</code></td></tr>
+<tr class="memdesc:a0945ed514d22e74a887ecbb920c67a49"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dictionary of a "grid" of values on the map that correspond to the props in that grid  <a href="#a0945ed514d22e74a887ecbb920c67a49">More...</a><br /></td></tr>
 <tr class="separator:a0945ed514d22e74a887ecbb920c67a49"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a31f7d254d5ef7b42f08f53a496a6a570"><td class="memItemLeft" align="right" valign="top">Dictionary&lt; int, Dictionary&lt; string, float &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_prop_unlimiter_1_1_manager_1_1_prop_unlimiter_manager.html#a31f7d254d5ef7b42f08f53a496a6a570">ExtraMapping</a><code> [get]</code></td></tr>
+<tr class="memdesc:a31f7d254d5ef7b42f08f53a496a6a570"><td class="mdescLeft">&#160;</td><td class="mdescRight">Dictionary of <a class="el" href="class_prop_unlimiter_1_1_manager_1_1_prop_container.html" title="A container for Unlimited props, wraps around the actual prop instance itself, and a dict of string t...">PropContainer</a> references/hashcodes to the extra mapping for the <a class="el" href="class_prop_unlimiter_1_1_manager_1_1_prop_container.html" title="A container for Unlimited props, wraps around the actual prop instance itself, and a dict of string t...">PropContainer</a>  <a href="#a31f7d254d5ef7b42f08f53a496a6a570">More...</a><br /></td></tr>
+<tr class="separator:a31f7d254d5ef7b42f08f53a496a6a570"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
 <a id="a24f770bae29679e39af7046f85bd6039"></a>
@@ -427,7 +433,7 @@ Dictionary&lt; int, List&lt; <a class="el" href="class_prop_unlimiter_1_1_manage
       </table>
 </div><div class="memdoc">
 
-<p>Place a prop in alternate prop store </p>
+<p>Place a prop in alternate prop store, Note: Will set additional values in extras dict (accx, accz) for precision placement of props </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">info</td><td>Prop info(mesh, availability flags, etc)</td></tr>
@@ -463,6 +469,99 @@ Dictionary&lt; int, List&lt; <a class="el" href="class_prop_unlimiter_1_1_manage
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a id="aef9c520f1816458d45b9f30a10e3ecf0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aef9c520f1816458d45b9f30a10e3ecf0">&#9670;&nbsp;</a></span>UpdateProp()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void PropUnlimiter.Manager.PropUnlimiterManager.UpdateProp </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_prop_unlimiter_1_1_manager_1_1_prop_container.html">PropContainer</a>&#160;</td>
+          <td class="paramname"><em>container</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">Vector3&#160;</td>
+          <td class="paramname"><em>newPosition</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>newAngle</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Update an existing <a class="el" href="class_prop_unlimiter_1_1_manager_1_1_prop_container.html" title="A container for Unlimited props, wraps around the actual prop instance itself, and a dict of string t...">PropContainer</a> to a new position/angle </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">container</td><td>The <a class="el" href="class_prop_unlimiter_1_1_manager_1_1_prop_container.html" title="A container for Unlimited props, wraps around the actual prop instance itself, and a dict of string t...">PropContainer</a> to update</td></tr>
+    <tr><td class="paramname">newPosition</td><td>The new prop position</td></tr>
+    <tr><td class="paramname">newAngle</td><td>The new prop angle</td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<h2 class="groupheader">Property Documentation</h2>
+<a id="a31f7d254d5ef7b42f08f53a496a6a570"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a31f7d254d5ef7b42f08f53a496a6a570">&#9670;&nbsp;</a></span>ExtraMapping</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Dictionary&lt;int, Dictionary&lt;string, float&gt; &gt; PropUnlimiter.Manager.PropUnlimiterManager.ExtraMapping</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Dictionary of <a class="el" href="class_prop_unlimiter_1_1_manager_1_1_prop_container.html" title="A container for Unlimited props, wraps around the actual prop instance itself, and a dict of string t...">PropContainer</a> references/hashcodes to the extra mapping for the <a class="el" href="class_prop_unlimiter_1_1_manager_1_1_prop_container.html" title="A container for Unlimited props, wraps around the actual prop instance itself, and a dict of string t...">PropContainer</a> </p>
+
+</div>
+</div>
+<a id="a0945ed514d22e74a887ecbb920c67a49"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0945ed514d22e74a887ecbb920c67a49">&#9670;&nbsp;</a></span>Props</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Dictionary&lt;int, List&lt;<a class="el" href="class_prop_unlimiter_1_1_manager_1_1_prop_container.html">PropContainer</a>&gt; &gt; PropUnlimiter.Manager.PropUnlimiterManager.Props</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">get</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Dictionary of a "grid" of values on the map that correspond to the props in that grid </p>
 
 </div>
 </div>

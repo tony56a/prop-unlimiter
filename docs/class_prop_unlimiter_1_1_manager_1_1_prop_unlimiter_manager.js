@@ -10,5 +10,7 @@ var class_prop_unlimiter_1_1_manager_1_1_prop_unlimiter_manager =
     [ "SetUnlimitedProp", "class_prop_unlimiter_1_1_manager_1_1_prop_unlimiter_manager.html#acefdac8a19b94f6de72c01481d9747cc", null ],
     [ "SetUnlimitedProp", "class_prop_unlimiter_1_1_manager_1_1_prop_unlimiter_manager.html#a20bcb33fec53f9fb9fd0c5dcd04be9ed", null ],
     [ "SetUnlimitedProp", "class_prop_unlimiter_1_1_manager_1_1_prop_unlimiter_manager.html#aa21130f7f4ee6842ce076383de61fddd", null ],
+    [ "UpdateProp", "class_prop_unlimiter_1_1_manager_1_1_prop_unlimiter_manager.html#aef9c520f1816458d45b9f30a10e3ecf0", null ],
+    [ "ExtraMapping", "class_prop_unlimiter_1_1_manager_1_1_prop_unlimiter_manager.html#a31f7d254d5ef7b42f08f53a496a6a570", null ],
     [ "Props", "class_prop_unlimiter_1_1_manager_1_1_prop_unlimiter_manager.html#a0945ed514d22e74a887ecbb920c67a49", null ]
 ];
